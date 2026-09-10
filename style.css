@@ -1,0 +1,399 @@
+/* ==========================================================================
+   RESET E VARIÁVEIS
+   ========================================================================== */
+:root {
+  --bg-primary: #6b5d0c;
+  --bg-card: #ffffff;
+  --color-header: #15ff00;
+  --color-border: #dcdcdc;
+  
+  --btn-danger-green: #28a745;
+  --btn-subtle-gray: #e4e6eb;
+  
+  --font-main: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-primary);
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   HEADER & FOOTER
+   ========================================================================== */
+.main-header {
+  background-color: var(--color-header);
+  border-bottom: 3px dashed #ff00ff;
+  padding: 20px;
+  text-align: center;
+}
+
+.logo-area h1 {
+  font-size: 1.8rem;
+  color: #222;
+}
+
+.tagline {
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.main-footer {
+  margin-top: auto;
+  padding: 20px;
+  background-color: #222;
+  color: #888;
+  text-align: center;
+  font-size: 0.75rem;
+}
+
+/* LINK INVISÍVEL NO RODAPÉ */
+.invisible-link {
+  color: #222; /* Mesma cor de fundo do rodapé */
+  text-decoration: none;
+  cursor: default;
+}
+
+/* ==========================================================================
+   LAYOUT PRINCIPAL
+   ========================================================================== */
+.page-container {
+  width: 100%;
+  max-width: 480px;
+  margin: 30px auto;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ==========================================================================
+   PEGADINHAS CSS PURAS
+   ========================================================================== */
+
+/* 1. Anúncio Falso com Checkbox Hack */
+.hidden-toggle {
+  display: none;
+}
+
+.ad-banner {
+  background: linear-gradient(90deg, #ff00ff, #ff5500);
+  color: #4b2b07;
+  padding: 15px;
+  border-radius: 8px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.ad-badge {
+  background-color: #fff;
+  color: #ff00ff;
+  font-size: 0.65rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.btn-close-ad {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+
+.ad-trap-message {
+  display: none;
+  margin-top: 10px;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 8px;
+  border-radius: 4px;
+}
+
+/* Quando clica no 'X', o checkbox é marcado e expande o aviso em vez de fechar */
+#close-ad-toggle:checked + .ad-banner .ad-trap-message {
+  display: block;
+}
+
+/* 2. Botão Submit Fugitivo com CSS :hover */
+.btn-secondary-evasive {
+  background-color: var(--btn-subtle-gray);
+  color: #aaa;
+  border: 1px solid #ccc;
+  flex: 1;
+  transition: transform 0.15s ease-out;
+}
+
+.btn-secondary-evasive:hover {
+  transform: translate(60px, -25px); /* Move o botão quando o mouse se aproxima */
+}
+
+/* 3. Tela de Sucesso Nativa usando CSS :target */
+.success-card {
+  display: none;
+  text-align: center;
+  background-color: #e8f5e9;
+  border-color: #a5d6a7;
+  color: #1b5e20;
+}
+
+/* Esconde o formulário e mostra a tela de sucesso quando o hash #tela-sucesso está ativo */
+.success-card:target {
+  display: block;
+}
+
+.success-card:target ~ .login-card,
+body:has(#tela-sucesso:target) .login-card {
+  display: none;
+}
+
+/* ==========================================================================
+   ESTILOS DOS FORMULÁRIOS
+   ========================================================================== */
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.form-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.low-contrast-label {
+  color: #ffffff; /* Texto branco no fundo branco (Invisível) */
+  font-size: 0.85rem;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.input-field:focus {
+  outline: none; /* Remove indicativo de foco */
+  border-color: #ffaa00;
+}
+
+.range-field {
+  width: 100%;
+}
+
+.range-hint {
+  font-size: 0.7rem;
+  color: #ff00ff;
+}
+
+.password-rules {
+  font-size: 0.7rem;
+  color: #888;
+  margin-left: 15px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-danger-disguised {
+  background-color: var(--btn-danger-green);
+  color: #fff;
+  flex: 2;
+}
+
+.btn-success {
+  background-color: #2e7d32;
+  color: white;
+  margin-top: 15px;
+}
+
+/* ==========================================================================
+   ANÚNCIOS E ELEMENTOS QUE ATRAPALHAM A TELA (CSS PURO)
+   ========================================================================== */
+
+/* 1. Elementos Flutuantes Cruzando a Tela */
+.floating-obstacle {
+  position: fixed;
+  z-index: 999;
+  padding: 12px 20px;
+  background: #ff0055;
+  color: white;
+  font-weight: bold;
+  font-size: 0.85rem;
+  border: 2px solid yellow;
+  border-radius: 6px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  pointer-events: auto;
+}
+
+.fake-x {
+  background: black;
+  color: white;
+  padding: 2px 6px;
+  font-size: 0.7rem;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/* Animação do primeiro elemento atravessando horizontalmente */
+.obstacle-1 {
+  top: 20%;
+  left: -200px;
+  animation: floatAcross 8s infinite linear;
+}
+
+/* Animação do segundo elemento atravessando diagonalmente */
+.obstacle-2 {
+  bottom: 10%;
+  right: -250px;
+  background: #ffaa00;
+  color: black;
+  animation: floatDiagonal 6s infinite ease-in-out;
+}
+
+@keyframes floatAcross {
+  0% {
+    left: -200px;
+  }
+  50% {
+    left: 100vw;
+  }
+  100% {
+    left: -200px;
+  }
+}
+
+@keyframes floatDiagonal {
+  0% {
+    right: -250px;
+    bottom: 10%;
+  }
+  50% {
+    right: 100vw;
+    bottom: 70%;
+  }
+  100% {
+    right: -250px;
+    bottom: 10%;
+  }
+}
+
+/* 2. Pop-up Modal Invasivo no Centro da Tela */
+.hidden-toggle {
+  display: none;
+}
+
+.modal-overlay {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-box {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  max-width: 380px;
+  text-align: center;
+  border: 4px solid red;
+}
+
+.modal-box h3 {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.modal-box p {
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+  color: #ff0000;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-modal-accept {
+  background: #28a745;
+  color: white;
+  padding: 10px;
+  flex: 1;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Pegadinha: O botão "Recusar" na verdade é vermelho e desbotado */
+.btn-modal-decline {
+  background: #ccc;
+  color: #ff0000;
+  padding: 10px;
+  flex: 1;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Esconde o Modal quando o Checkbox for desmarcado clicando nos botões */
+#modal-toggle:not(:checked) + .modal-overlay {
+  display: none;
+}

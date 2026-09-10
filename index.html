@@ -1,0 +1,133 @@
+<link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrokaMassa - O Maior Desapego do Brasil</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="logo-area">
+      <h1>🛒 TrokaMassa</h1>
+      <span class="tagline">O Maior Desapego do Brasil (Compre com até 90% de desconto!)</span>
+    </div>
+  </header>
+
+  <main class="page-container">
+    
+    <!-- PEGADINHA 1: Anúncio "fechável" via CSS Checkbox Hack. 
+         Ao clicar no 'X', o banner se expande e cobre a tela inteira em vez de fechar. -->
+    <input type="checkbox" id="close-ad-toggle" class="hidden-toggle">
+    <aside class="ad-banner">
+      <div class="ad-content">
+        <span class="ad-badge">PROMOÇÃO IMPERDÍVEL</span>
+        <p>🔥 Geladeira usada por apenas <strong>R$ 10,00</strong>!</p>
+      </div>
+      <label for="close-ad-toggle" class="btn-close-ad">X</label>
+      <div class="ad-trap-message">
+        ⚠️ VOCÊ NÃO PODE FECHAR ESTE ANÚNCIO SEM ANTES COMPRAR A GELADEIRA!
+      </div>
+    </aside>
+
+    <!-- FORMULÁRIO DE LOGIN -->
+    <section class="card login-card">
+      <div class="card-header">
+        <h2>Área de Acesso do Cliente</h2>
+        <p class="subtitle">Identifique-se para visualizar ofertas locais</p>
+      </div>
+
+      <form action="#tela-sucesso" method="GET" class="form-layout">
+        
+        <!-- PEGADINHA 2: Texto com contraste invisível (revela apenas ao selecionar com o mouse) -->
+        <div class="form-control">
+          <label for="email" class="low-contrast-label">Digite seu E-mail cadastrado:</label>
+          <input type="email" id="email" class="input-field" placeholder="exemplo@dominio.com" required tabindex="3">
+        </div>
+
+        <!-- PEGADINHA 3: Slider de idade com valor decimal de precisão nativo -->
+        <div class="form-control">
+          <label for="idade">Confirme sua idade exata:</label>
+          <input type="range" id="idade" class="range-field" min="18" max="99" step="0.0001" value="50" tabindex="1">
+          <span class="range-hint">Arraste para selecionar a precisão decimal exata</span>
+        </div>
+
+        <!-- PEGADINHA 4: Regras de validação nativas com pattern rigoroso no HTML -->
+        <div class="form-control">
+          <label for="senha">Sua Senha de Acesso:</label>
+          <input 
+            type="password" 
+            id="senha" 
+            class="input-field" 
+            placeholder="••••••••" 
+            required 
+            pattern="[^Aa]{8}" 
+            title="A senha deve ter exatamente 8 caracteres e NÃO pode conter a letra A ou a"
+            tabindex="2"
+          >
+          <ul class="password-rules">
+            <li>Exatamente 8 caracteres</li>
+            <li>Proibido usar a letra "A" ou "a"</li>
+          </ul>
+        </div>
+
+        <!-- BOTOES INVERTIDOS -->
+        <div class="form-actions">
+          <!-- PEGADINHA 5: O botão verde bonito é do tipo reset (limpa tudo) -->
+          <button type="reset" class="btn btn-danger-disguised">
+            AVANÇAR PARA AS COMPRAS
+          </button>
+          
+          <!-- PEGADINHA 6: O botão submit foge via CSS :hover -->
+          <button type="submit" class="btn btn-secondary-evasive">
+            Entrar
+          </button>
+        </div>
+
+      </form>
+    </section>
+
+    <!-- TELA DE SUCESSO NATIVA (Aparece via CSS quando a URL possui a ancora #tela-sucesso) -->
+    <section class="card success-card" id="tela-sucesso">
+      <div class="success-icon">🎉</div>
+      <h2>Acesso Concedido!</h2>
+      <p>Você superou com sucesso todos os obstáculos da pior interface sem usar uma linha de JavaScript.</p>
+      <a href="#" class="btn btn-success">Tentar Novamente</a>
+    </section>
+
+  </main>
+
+  <!-- BANNERS E ELEMENTOS FLUTUANTES QUE ATRAPALHAM DA TELA -->
+<div class="floating-obstacle obstacle-1">
+  🔥 GELADEIRA R$ 10,00! 
+  <span class="fake-x">X</span>
+</div>
+
+<div class="floating-obstacle obstacle-2">
+  ⚠️ OFERTA EXPIRANDO EM 00:03! 
+  <span class="fake-x">X</span>
+</div>
+
+<!-- POP-UP MODAL FIXO QUE BLOQUEIA O CENTRO DA TELA -->
+<input type="checkbox" id="modal-toggle" class="hidden-toggle" checked>
+<div class="modal-overlay">
+  <div class="modal-box">
+    <h3>📢 NOTIFICAÇÃO IMPORTANTE</h3>
+    <p>Você foi o visitante nº 1.000.000! Aceite todos os cookies rastreadores para continuar lendo.</p>
+    <div class="modal-actions">
+      <label for="modal-toggle" class="btn-modal-accept">ACEITAR TUDO</label>
+      <label for="modal-toggle" class="btn-modal-decline">RECUSAR (RECOMENDADO)</label>
+    </div>
+  </div>
+</div>
+
+  <footer class="main-footer">
+    <p>© 2026 TrokaMassa Inc. Todos os direitos reservados.</p>
+    <!-- PEGADINHA 7: Link invisível no rodapé que pula direto para o sucesso (#tela-sucesso) -->
+    <p>Problemas ao entrar? <a href="#tela-sucesso" class="invisible-link">Logar como Convidado</a></p>
+  </footer>
+
+</body>
+</html>
